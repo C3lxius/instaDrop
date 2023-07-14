@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "339814973640",
+    "project_id": "instadrop-89c82",
+    "storage_bucket": "instadrop-89c82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339814973640:android:2ca0fb86ff0b292c64e5fd",
+        "android_client_info": {
+          "package_name": "com.example.instadrop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339814973640-qfb6sdggujkkm12q1h2c3k8gieik1h67.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsocW1mBL21-S0QU44OkW1OZkvaFJXE7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339814973640-qfb6sdggujkkm12q1h2c3k8gieik1h67.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

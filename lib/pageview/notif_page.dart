@@ -6,12 +6,6 @@ class NotifPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        FirebaseAuth.instance.signOut();
-      },
-      style: TextButton.styleFrom(minimumSize: const Size(60, 40)),
-      child: const Text('Sign Out'),
-    );
+    return const Placeholder();
   }
 }

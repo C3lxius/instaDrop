@@ -41,7 +41,7 @@ class _PageCardState extends State<PageCard> {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<UserProvider>().myUser;
+    // final user = context.watch<UserProvider>().myUser;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,7 @@ class _PageCardState extends State<PageCard> {
         GestureDetector(
           onDoubleTap: () async {
             await FireMethods()
-                .addLike(widget.snap?['pid'], user.id, widget.snap?['likes']);
+                .addLike(widget.snap?['pid'], 'user.id', widget.snap?['likes']);
             setState(() {
               likeAnimation = true;
             });
@@ -66,9 +66,7 @@ class _PageCardState extends State<PageCard> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => ProfilePage(
-                          userInfo: widget.snap?['username'],
-                        )));
+                    builder: (_) => ProfilePage(uid: widget.snap?['id'])));
               },
               child: Row(
                 children: [
@@ -126,7 +124,7 @@ class _PageCardState extends State<PageCard> {
           child: Row(
             children: [
               LikeAnimation(
-                isAnimating: widget.snap?['likes'].contains(user.id),
+                isAnimating: widget.snap?['likes'].contains('user.id'),
                 isLike: true,
                 child: IconButton(
                     iconSize: 35,
@@ -134,10 +132,10 @@ class _PageCardState extends State<PageCard> {
                       setState(() {
                         likeAnimation = true;
                       });
-                      await FireMethods().addLike(
-                          widget.snap?['pid'], user.id, widget.snap?['likes']);
+                      await FireMethods().addLike(widget.snap?['pid'],
+                          'user.id', widget.snap?['likes']);
                     },
-                    icon: widget.snap?['likes'].contains(user.id)
+                    icon: widget.snap?['likes'].contains('user.id')
                         ? const Icon(
                             Icons.favorite,
                             color: Colors.red,

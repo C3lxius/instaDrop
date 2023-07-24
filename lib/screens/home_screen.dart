@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    call();
+    // call(); //TODO: fix the USerprovider thingy
     pageController = PageController();
     super.initState();
   }

@@ -4,7 +4,7 @@ import 'package:instadrop/pageview/profile_page.dart';
 import 'package:instadrop/utilities/constants.dart';
 import 'package:instadrop/utilities/myTextField.dart';
 import 'package:instadrop/utilities/search_card.dart';
-import 'package:instadrop/utilities/search_stackered.dart';
+import 'package:instadrop/utilities/search_staggered.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -16,6 +16,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   late TextEditingController searchController;
   bool show = true;
+  bool tap = false;
 
   @override
   void initState() {
@@ -45,9 +46,20 @@ class _SearchPageState extends State<SearchPage> {
                   border: InputBorder.none,
                   fillColor: textColor,
                   suffixIconColor: textColor),
-              onFieldSubmitted: (_) {
+              onChanged: (_) {
                 setState(() {
                   show = false;
+                });
+              },
+              onTap: () {
+                setState(() {
+                  tap = true;
+                });
+              },
+              onTapOutside: (_) {
+                FocusScope.of(context).unfocus();
+                setState(() {
+                  tap = false;
                 });
               },
             ),
@@ -57,7 +69,7 @@ class _SearchPageState extends State<SearchPage> {
       body: Column(
         children: [
           show
-              ? const SearchStackered()
+              ? (tap ? const SizedBox() : const SearchStaggered())
               : FutureBuilder(
                   future: FirebaseFirestore.instance
                       .collection('User')
@@ -76,10 +88,12 @@ class _SearchPageState extends State<SearchPage> {
                                 padding: const EdgeInsets.all(8),
                                 child: InkWell(
                                   onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                ProfilePage(isUser: false)));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (context) => ProfilePage(
+                                                  uid: snap.data!.docs[index]
+                                                      .data()['id'],
+                                                )));
                                   },
                                   child: SearchCard(
                                     snap: snap.data!.docs[index].data(),

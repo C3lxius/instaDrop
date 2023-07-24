@@ -261,11 +261,41 @@ class FireMethods {
   }
 
   void deletePost(String pid) async {
+    String path;
     try {
       _store.collection('Post').doc(pid).delete();
       // _storage.
     } on Exception catch (e) {
       print(e.toString());
     }
+  }
+
+  //Follow and Unfollow Functionality
+  void follow(String uid, bool isfollowing) async {
+    if (isfollowing) {
+      //To unfollow. Removes user's info the 'followers' field
+      await _store.collection('User').doc(uid).update({
+        'followers': FieldValue.arrayRemove([_auth.currentUser!.uid])
+      }).catchError((error) => print(error));
+
+      //Removes the followed from user's 'following' field
+      await _store.collection('User').doc(_auth.currentUser!.uid).update({
+        'following': FieldValue.arrayRemove([uid])
+      }).catchError((error) => print(error));
+    } else {
+      //To follow. Adds user's info to the 'follower's field
+      await _store.collection('User').doc(uid).update({
+        'followers': FieldValue.arrayUnion([_auth.currentUser!.uid])
+      }).catchError((err) => print(err));
+
+      //Add the followed to user's following field
+      _store.collection('User').doc(_auth.currentUser!.uid).update({
+        'following': FieldValue.arrayUnion([uid])
+      });
+    }
+  }
+
+  void signOut() async {
+    await _auth.signOut();
   }
 }

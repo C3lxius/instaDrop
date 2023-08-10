@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instadrop/screens/explore_screen.dart';
-import 'package:instadrop/utilities/post_card.dart';
 
 class SearchStaggered extends StatelessWidget {
   const SearchStaggered({super.key});

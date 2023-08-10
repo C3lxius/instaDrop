@@ -8,18 +8,18 @@ import '../providers/user_provider.dart';
 import 'constants.dart';
 import 'likeanimation.dart';
 
-class PageCard extends StatefulWidget {
+class PostCard extends StatefulWidget {
   final Map<String, dynamic>? snap;
-  const PageCard({
+  const PostCard({
     super.key,
     required this.snap,
   });
 
   @override
-  State<PageCard> createState() => _PageCardState();
+  State<PostCard> createState() => _PostCardState();
 }
 
-class _PageCardState extends State<PageCard> {
+class _PostCardState extends State<PostCard> {
   bool likeAnimation = false;
 
   showDelete(BuildContext context) {

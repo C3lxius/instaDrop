@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instadrop/pageview/profile_page.dart';
 import 'package:instadrop/utilities/constants.dart';
-import 'package:instadrop/utilities/myTextField.dart';
 import 'package:instadrop/utilities/search_card.dart';
 import 'package:instadrop/utilities/search_staggered.dart';
 

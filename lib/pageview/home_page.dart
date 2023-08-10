@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: snapshot.data?.docs.length,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: PageCard(
+                  child: PostCard(
                     snap: snapshot.data?.docs[index].data(),
                   ),
                 ),

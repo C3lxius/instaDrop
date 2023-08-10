@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../utilities/constants.dart';
@@ -29,7 +28,7 @@ class ExploreScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: PageCard(
+              child: PostCard(
                 snap: snap[index].data(),
               ),
             );

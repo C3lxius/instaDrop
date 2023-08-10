@@ -42,6 +42,7 @@ class _CommentScreenState extends State<CommentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: fix user provider issues
     final user = context.watch<UserProvider>().myUser;
     return Scaffold(
       appBar: AppBar(
